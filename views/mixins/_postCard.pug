@@ -1,0 +1,7 @@
+mixin postCard(post = {})
+  .card.mb-4
+    .card-body
+      p
+        a(href=`/post/${post.slug}`).post-card-title= post.title
+      p #{h.moment(post.created).fromNow()}  by&nbsp;
+        a(href="#")= post.author.name

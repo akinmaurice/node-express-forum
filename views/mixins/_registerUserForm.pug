@@ -1,0 +1,13 @@
+mixin registerUserForm(body = {})
+  form.form-signin(action="/register" method="POST")
+    .form-group
+      input(type="hidden" name="_csrf" value=csrftoken)
+      input(type="text" name="name" placeholder="Name" value=body.name || '').form-control
+    .form-group
+      input(type="email" name="email" placeholder="Email Address" value=body.email || '').form-control
+    .form-group
+      input(type="password" name="password" placeholder="Password").form-control
+    .form-group
+      input(type="password" name="password-confirm" placeholder="Confirm Password").form-control
+    .formgroup
+      button.btn.btn-app.btn-block(type="submit" name="Login") Create Account

@@ -1,0 +1,8 @@
+mixin pagination(page, pages, count)
+  nav(aria-label="page navigation example")
+    ul.pagination
+      if page > 1
+        li.page-item
+          a(href=`/posts/page/${page - 1}`).btn.btn-primary.btn-xs Prev
+      if page < pages
+        a(href=`/posts/page/${parseFloat(page) + 1}`).btn.btn-primary.btn-xs Next

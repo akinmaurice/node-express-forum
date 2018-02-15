@@ -1,0 +1,19 @@
+extends layout
+
+include mixins/_postCard
+include mixins/_pagination
+
+block content
+  .container
+    .row.text-center
+      .col-lg-12
+        p.headTitle Lastest Posts on #{h.appName}
+        hr
+    .row.text-center
+      .col-lg-12
+        if posts.length >= 1
+          each post in posts
+            +postCard(post)
+          +pagination(page, pages, count)
+        else
+          .alert.alert-danger No articles currently!

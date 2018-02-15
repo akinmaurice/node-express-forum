@@ -1,0 +1,97 @@
+@font-face {
+  font-family: 'panama';
+  src: url("./fonts/panama-bold-webfont.woff2") format("woff2"), url("./fonts/panama-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  padding-top: 80px;
+  background: #F6F6EF;
+  color: #000 !important;
+  font-size: 13px;
+  font-family: 'Open Sans';
+}
+
+.navbar-dark {
+  background: linear-gradient(90deg,#e44d26,#f16529);
+  }
+
+  .navbar-brand {
+    color: #000 !important;
+    font-family: 'panama';
+    letter-spacing: -1px;
+    word-spacing: 0px;
+    font-weight: 600;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-decoration: none;
+    text-indent: 0px;
+  }
+
+  .navbar {
+    margin-bottom: 0;
+  }
+  .nav-link  {
+    color: #000 !important;
+    font-family: 'panama';
+  }
+  .headTitle {
+    color: #e44d26 !important;
+    font-family: 'panama';
+    font-size: 18px;
+  }
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 13px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.btn-app {
+  background-color: #f16529;
+}
+
+textarea {
+  resize: none;
+}
+
+.post-card-title {
+  color: #000 !important;
+}

@@ -1,0 +1,9 @@
+mixin loginForm()
+  form.form-signin(action="/login" method="POST")
+    .form-group
+      input(type="hidden" name="_csrf" value=csrftoken)
+      input(type="email" name="email" placeholder="Email Address").form-control
+    .form-group
+      input(type="password" name="password" placeholder="Password").form-control
+    .formgroup
+      button.btn.btn-app.btn-block(type="submit" name="Login") Login
