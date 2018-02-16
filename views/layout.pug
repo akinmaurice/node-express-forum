@@ -20,10 +20,11 @@ html
           span.navbar-toggler-icon
         .collapse.navbar-collapse(id="navbarCollapse")
           ul.navbar-nav
-            li.nav-item
-              a(href="/login").nav-link Top
-            li.nav-item
-              a(href="/login").nav-link Category
+            li.nav-item.dropdown
+              a(href="/login" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false").nav-link.dropdown-toggle Category
+              .dropdown-menu(aria-labelledby="dropdown01")
+                each category in h.postCategories
+                  a.dropdown-item(href=`/category/${category}`)= category
             li.nav-item
               a(href="/login").nav-link Search
             if user

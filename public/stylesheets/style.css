@@ -10,7 +10,7 @@ body {
   background: #F6F6EF;
   color: #000 !important;
   font-size: 13px;
-  font-family: 'Open Sans';
+  font-family: 'panama';
 }
 
 .navbar-dark {
@@ -94,4 +94,20 @@ textarea {
 
 .post-card-title {
   color: #000 !important;
+}
+
+.btn-pagination {
+  font-size: 12px;
+}
+
+.dropdown-item {
+  font-size: 13px;
+}
+
+.comment-card {
+  margin: 5px;
+}
+
+.comment-span {
+  font-size: 9px;
 }

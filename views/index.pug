@@ -7,13 +7,13 @@ block content
   .container
     .row.text-center
       .col-lg-12
-        p.headTitle Lastest Posts on #{h.appName}
+        p.headTitle= pageTitle
         hr
     .row.text-center
       .col-lg-12
         if posts.length >= 1
           each post in posts
             +postCard(post)
-          +pagination(page, pages, count)
+          +pagination(page, pages, count).text-center
         else
           .alert.alert-danger No articles currently!

@@ -1,0 +1,5 @@
+mixin commentCard(comment)
+  .card.comment-card
+    .card-body
+      p #{comment.comment} -
+        span.comment-span #{comment.name} - #{h.moment(comment.created).fromNow()}

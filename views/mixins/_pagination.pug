@@ -1,8 +1,9 @@
 mixin pagination(page, pages, count)
-  nav(aria-label="page navigation example")
-    ul.pagination
+  nav(aria-label="page navigation example").text-center
+    ul.pagination.text-center
       if page > 1
         li.page-item
-          a(href=`/posts/page/${page - 1}`).btn.btn-primary.btn-xs Prev
+          a(href=`/posts/page/${page - 1}`).page-link Prev
       if page < pages
-        a(href=`/posts/page/${parseFloat(page) + 1}`).btn.btn-primary.btn-xs Next
+        li.page-item
+          a(href=`/posts/page/${parseFloat(page) + 1}`).page-link Next

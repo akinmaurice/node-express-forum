@@ -5,6 +5,7 @@ const router = express.Router();
 const appController = require('../controllers/appController');
 const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
+const commentController = require('../controllers/commentController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 /*
@@ -106,5 +107,22 @@ router.get(
   '/post/:slug',
   appController.getPostBySlug,
 );
+
+/*
+router to Get Posts for each tag
+*/
+router.get(
+  '/category/:category',
+  appController.getPostsByCategory,
+);
+
+/*
+router to Post Comment
+*/
+router.post(
+  '/comment',
+  catchErrors(commentController.newComment),
+);
+
 
 module.exports = router;

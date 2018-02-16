@@ -22,14 +22,19 @@ exports.getIndexPage = async (req, res) => {
     res.redirect(`/posts/page/${pages}`);
   } else {
     res.render('index', {
-      title: 'Home Page', posts, page, pages, count,
+      title: 'Home Page',
+      posts,
+      page,
+      pages,
+      count,
+      pageTitle: 'Lastest Posts',
     });
   }
 };
 
 
 /*
-Function to handle the get Add Post Page
+Function to handle get Add Post Page
 */
 exports.getaddPostPage = async (req, res) => {
   res.render('addPost', { title: 'Add New Post' });
@@ -58,3 +63,36 @@ exports.getPostBySlug = async (req, res) => {
   res.render('post', { title: post.title, post });
 };
 
+/*
+Get Posts by categories
+*/
+exports.getPostsByCategory = async (req, res) => {
+  // CHeck page number from the params sent in the url or set to 1
+  const page = req.params.page || 1;
+  // SET LIMIT OF number of posts to return
+  const limit = 5;
+  // SET THE NUMBER OF POSTS TO SKIP BASED ON PAGE NUMBER
+  const skip = (page * limit) - limit;
+  const { category } = req.params;
+  const tagQuery = category || { $exists: true };
+  const tagsPromise = await Post.getTagsList();
+  const postsPromise = await Post.find({ tags: tagQuery }).sort({ created: -1 }).populate('author').skip(skip)
+    .limit(limit);
+  const countPromise = await Post.find({ tags: tagQuery }).count();
+  const [tags, posts, count] = await Promise.all([tagsPromise, postsPromise, countPromise]);
+  const pages = Math.ceil(count / limit);
+  if (!posts.length && skip) {
+    res.redirect(`/posts/page/${pages}`);
+  } else {
+    res.render('index', {
+      tags,
+      title: `${category} Posts`,
+      posts,
+      count,
+      page,
+      pages,
+      category,
+      pageTitle: `${category} Posts`,
+    });
+  }
+};

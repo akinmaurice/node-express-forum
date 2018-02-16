@@ -5,5 +5,9 @@ mixin editPost()
       input(type="text" name="title" placeholder="Post Title").form-control
     .form-group
       textarea(name="content" rows="10" placeholder="Post Content").form-control
+    .form-group
+      select(name="tags").form-control
+        each category in h.postCategories
+          option(value=category).form-control= category
     .formgroup
       button.btn.btn-app.btn-block(type="submit" name="submit") Submit
