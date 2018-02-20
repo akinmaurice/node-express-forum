@@ -111,3 +111,8 @@ textarea {
 .comment-span {
   font-size: 9px;
 }
+
+.edit-link-btn {
+  color: #fff;
+  font-size: 13px;
+}

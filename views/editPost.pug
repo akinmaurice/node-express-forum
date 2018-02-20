@@ -1,0 +1,18 @@
+extends layout
+
+
+include mixins/_editPost
+
+block content
+  .container
+    .row.text-center
+      .col-lg-12
+        h1 Edit Post
+    .row.text-center
+      .col-lg-12
+        +editPost(post)
+
+
+
+
+

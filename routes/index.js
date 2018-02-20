@@ -124,5 +124,13 @@ router.post(
   catchErrors(commentController.newComment),
 );
 
+/*
+Route to get The Post To Edit
+*/
+router.get(
+  '/post/:slug/edit',
+  authController.isLoggedIn,
+  catchErrors(appController.getPostToUpdate),
+);
 
 module.exports = router;

@@ -96,3 +96,16 @@ exports.getPostsByCategory = async (req, res) => {
     });
   }
 };
+
+/*
+Function to get data of Post to be updated
+*/
+exports.getPostToUpdate = async (req, res) => {
+  const post = await Post.findOne({ slug: req.params.slug }).populate('author');
+  if (!post) {
+    res.redirect('/error'); // Send them to 404 page!
+    return;
+  }
+  res.render('editPost', { title: `Edit ${post.title}`, post });
+};
+
