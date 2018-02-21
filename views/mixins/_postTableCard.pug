@@ -1,0 +1,5 @@
+mixin postTableCard(post = {})
+  tr
+    td.text-left= post.title
+    td.text-right
+      a(href=`/post/${post.slug}/edit`)  Edit

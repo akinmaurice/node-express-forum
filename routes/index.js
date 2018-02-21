@@ -49,7 +49,7 @@ GET Profile page.
 router.get(
   '/profile',
   authController.isLoggedIn,
-  userController.getProfilePage,
+  userController.getUserPosts,
 );
 
 /*
@@ -133,4 +133,19 @@ router.get(
   catchErrors(appController.getPostToUpdate),
 );
 
+
+/*
+Router to Update Post
+*/
+router.post(
+  '/post/:slug/edit',
+  authController.isLoggedIn,
+  catchErrors(appController.verifyPost),
+  catchErrors(appController.updatePost),
+);
+
+router.get(
+  '/search',
+  catchErrors(appController.searchPost),
+);
 module.exports = router;

@@ -1,8 +1,21 @@
 extends layout
 
+
+include mixins/_postTableCard
+
 block content
   .container
     .row.text-center
       .col-lg-12
-        h1 Profile Page Here.
-        p Restricted Page.
+        h1 My Posts.
+        table.table
+          thead
+            tr
+              th Post Title
+              th.text-right action
+          tbody
+            if posts.length >= 1
+              each post in posts
+                +postTableCard(post)
+            else
+              .alert.alert-danger No articles currently!

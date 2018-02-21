@@ -16,7 +16,7 @@ block content
       .col-lg-3
     .row.text-center
       .col-lg-12
-        p.headTitle= pageTitle
+        p.headTitle= `Search results for ${pageTitle}`
         hr
     .row.text-center
       .col-lg-12
@@ -25,4 +25,4 @@ block content
             +postCard(post)
           +pagination(page, pages, count).text-center
         else
-          .alert.alert-danger No articles currently!
+          .alert.alert-danger Could not find any matching Post!

@@ -4,4 +4,4 @@ mixin postCard(post = {})
       p
         a(href=`/post/${post.slug}`).post-card-title= post.title
       p #{h.moment(post.created).fromNow()}  by&nbsp;
-        a(href="#")= post.author.name
+        span.author-span= post.author.name

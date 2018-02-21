@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const User = mongoose.model('User');
+const Post = mongoose.model('Post');
 const promisify = require('es6-promisify');
 /*
 Function to get the Register Page
@@ -10,10 +11,15 @@ exports.getRegisterPage = (req, res) => {
 };
 
 /*
-Function to get the Profile Page
+Function to get all user posts
 */
-exports.getProfilePage = (req, res) => {
-  res.render('profile', { title: 'My Account' });
+exports.getUserPosts = async (req, res) => {
+  const posts = await Post.find({ author: req.user._id });
+  console.log(posts);
+  res.render('profile', {
+    title: 'User Posts',
+    posts,
+  });
 };
 
 /*

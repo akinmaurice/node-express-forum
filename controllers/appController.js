@@ -97,11 +97,12 @@ exports.getPostsByCategory = async (req, res) => {
   }
 };
 
+
 /*
 Function to get data of Post to be updated
 */
 exports.getPostToUpdate = async (req, res) => {
-  const post = await Post.findOne({ slug: req.params.slug }).populate('author');
+  const post = await Post.findOne({ slug: req.params.slug, author: req.user._id }).populate('author');
   if (!post) {
     res.redirect('/error'); // Send them to 404 page!
     return;
@@ -109,3 +110,47 @@ exports.getPostToUpdate = async (req, res) => {
   res.render('editPost', { title: `Edit ${post.title}`, post });
 };
 
+/*
+MiddleWare to Verify before Update or delete
+*/
+exports.verifyPost = async (req, res, next) => {
+  const post = await Post.findOne({ _id: req.body.id, author: req.user._id });
+  if (!post) {
+    res.redirect('/error'); // Send them to 404 page!
+    return;
+  }
+  next();
+};
+
+/*
+Function to get data of Post to be updated
+*/
+exports.updatePost = async (req, res) => {
+  const post = await Post.findOneAndUpdate(
+    {
+      _id: req.body.id,
+    },
+    req.body,
+    { new: true, runValidatos: true },
+  ).exec();
+  req.flash('success', `Successfully updated ${post.title}`);
+  res.redirect(`/post/${post.slug}`);
+};
+
+/*
+Controller to search for posts
+ */
+exports.searchPost = async (req, res) => {
+  const searchTerm = req.query.q;
+  const posts = await Post.find({
+    $text: {
+      $search: req.query.q,
+    },
+  }, {
+    score: { $meta: 'textScore' },
+  }).sort({
+    score: { $meta: 'textScore' },
+  }).sort({ created: -1 }).populate('author');
+  res.render('search', { title: `Search results for: ${searchTerm}`, pageTitle: searchTerm, posts });
+  // res.json({posts, searchTerm});
+};

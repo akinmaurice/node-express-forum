@@ -7,8 +7,6 @@ block content
     .row.text-center
       .col-lg-12
         h4= post.title
-        a(href=`/post/${post.slug}/edit`).btn.btn-app.edit-link-btn Edit Post
-        br
         br
     .row.text-center
       .col-lg-3
@@ -30,7 +28,7 @@ block content
             .form-group
               button.btn.btn-app.btn-block(type="submit" name="submit") Submit
         else
-          .alert.alert-danger Login to Post or Edit Comments
+          .alert.alert-danger Login to Post Comments
         br
         each comment in post.comments
             +commentCard(comment)
