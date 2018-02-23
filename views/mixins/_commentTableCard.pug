@@ -1,0 +1,6 @@
+mixin commentTableCard(comment = {})
+  tr
+    td.text-left title
+    td= comment.comment
+    td.text-right
+      a(href=`/comment/${comment._id}/edit`)  Edit

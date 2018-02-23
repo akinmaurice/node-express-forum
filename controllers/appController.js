@@ -50,7 +50,6 @@ exports.newPost = async (req, res) => {
   res.redirect(`/post/${post.slug}`);
 };
 
-
 /*
 Controller to get post by slug
 */
@@ -60,6 +59,7 @@ exports.getPostBySlug = async (req, res) => {
     res.redirect('/error'); // Send them to 404 page!
     return;
   }
+  console.log(post);
   res.render('post', { title: post.title, post });
 };
 
@@ -139,7 +139,7 @@ exports.updatePost = async (req, res) => {
 
 /*
 Controller to search for posts
- */
+*/
 exports.searchPost = async (req, res) => {
   const searchTerm = req.query.q;
   const posts = await Post.find({
@@ -152,5 +152,4 @@ exports.searchPost = async (req, res) => {
     score: { $meta: 'textScore' },
   }).sort({ created: -1 }).populate('author');
   res.render('search', { title: `Search results for: ${searchTerm}`, pageTitle: searchTerm, posts });
-  // res.json({posts, searchTerm});
 };

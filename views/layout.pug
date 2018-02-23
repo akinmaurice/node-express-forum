@@ -21,7 +21,7 @@ html
         .collapse.navbar-collapse(id="navbarCollapse")
           ul.navbar-nav
             li.nav-item.dropdown
-              a(href="/login" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false").nav-link.dropdown-toggle Category
+              a(href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false").nav-link.dropdown-toggle Category
               .dropdown-menu(aria-labelledby="dropdown01")
                 each category in h.postCategories
                   a.dropdown-item(href=`/category/${category}`)= category
@@ -30,8 +30,11 @@ html
                 a(href="/add").nav-link Submit Post
           ul.navbar-nav.ml-auto
             if user
-              li.nav-item
-                a.nav-link(href="/profile")= user.email
+              li.nav-item.dropdown
+                a(href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false").nav-link.dropdown-toggle= user.email
+                .dropdown-menu(aria-labelledby="dropdown02")
+                  a.dropdown-item(href=`/profile`) Edit Posts
+                  a.dropdown-item(href=`/comments`) Edit Comments
               li
                 a.nav-link(href="/logout") logout
             else

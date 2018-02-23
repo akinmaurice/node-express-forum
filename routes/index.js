@@ -144,8 +144,22 @@ router.post(
   catchErrors(appController.updatePost),
 );
 
+/*
+route to search for post
+*/
 router.get(
   '/search',
   catchErrors(appController.searchPost),
 );
+
+/*
+Route to fetch all user comments
+*/
+router.get(
+  '/comments',
+  authController.isLoggedIn,
+  catchErrors(userController.getUserComments),
+);
+
+
 module.exports = router;

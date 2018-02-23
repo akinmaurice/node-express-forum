@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const User = mongoose.model('User');
 const Post = mongoose.model('Post');
+const Comment = mongoose.model('Comment');
 const promisify = require('es6-promisify');
 /*
 Function to get the Register Page
@@ -15,7 +16,6 @@ Function to get all user posts
 */
 exports.getUserPosts = async (req, res) => {
   const posts = await Post.find({ author: req.user._id });
-  console.log(posts);
   res.render('profile', {
     title: 'User Posts',
     posts,
@@ -68,4 +68,16 @@ exports.registerUser = async (req, res, next) => {
   const registerWithPromise = promisify(User.register, User);
   await registerWithPromise(user, req.body.password);
   next();
+};
+
+/*
+Function to get all user Comments
+*/
+exports.getUserComments = async (req, res) => {
+  const comments = await Comment.find({ author: req.user._id });
+  console.log(comments);
+  res.render('comments', {
+    title: 'User Comments',
+    comments,
+  });
 };
