@@ -59,7 +59,6 @@ exports.getPostBySlug = async (req, res) => {
     res.redirect('/error'); // Send them to 404 page!
     return;
   }
-  console.log(post);
   res.render('post', { title: post.title, post });
 };
 
