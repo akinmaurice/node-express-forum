@@ -70,14 +70,3 @@ exports.registerUser = async (req, res, next) => {
   next();
 };
 
-/*
-Function to get all user Comments
-*/
-exports.getUserComments = async (req, res) => {
-  const comments = await Comment.find({ author: req.user._id });
-  console.log(comments);
-  res.render('comments', {
-    title: 'User Comments',
-    comments,
-  });
-};

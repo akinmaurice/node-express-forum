@@ -152,14 +152,5 @@ router.get(
   catchErrors(appController.searchPost),
 );
 
-/*
-Route to fetch all user comments
-*/
-router.get(
-  '/comments',
-  authController.isLoggedIn,
-  catchErrors(userController.getUserComments),
-);
-
 
 module.exports = router;
